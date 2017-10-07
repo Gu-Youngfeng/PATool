@@ -18,6 +18,12 @@ public class Jslicer {
 	private int LINE;
 	private String libraryName;
 	
+	/***
+	 * To construct the constructor with 3 parameters.
+	 * @param cla class name
+	 * @param met method name
+	 * @param lin line number
+	 */
 	Jslicer(String cla, String met, int lin){
 		this.className = cla;
 		this.methodName = met;
@@ -25,6 +31,13 @@ public class Jslicer {
 		this.libraryName = null;
 	}
 	
+	/***
+	 * To construct the constructor with 4 parameters.
+	 * @param cla class name
+	 * @param met method name
+	 * @param lin line number
+	 * @param lib dependencies jar and .class file path
+	 */
 	Jslicer(String cla, String met, int lin, String lib){
 		this.className = cla;
 		this.methodName = met;
@@ -32,10 +45,15 @@ public class Jslicer {
 		this.libraryName = lib;
 	}
 	
-	
+	/***
+	 * To get slices from source code.
+	 * @param filter the string the slices must contain
+	 * @return
+	 */
 	public List<String> getMethodResults(String filter){
 		
 		String strCMD1;
+		
 		if(this.libraryName == null){
 			strCMD1 = "java -javaagent:libs/tracer.jar=tracefile:hello.trace -cp bin " + this.className;
 		}else{
@@ -50,7 +68,34 @@ public class Jslicer {
 		/**STEP 2. slicing program*/
 		CmdRunner cmd2 = new CmdRunner(strCMD2);
 
-		return cmd2.getResults("Hello");
+		return cmd2.getResults(filter);
+	}
+	
+	/***
+	 * To get slices from test case.
+	 * @param filter the string the slices must contain
+	 * @return
+	 */
+	public List<String> getTestResults(String filter){
+		
+		String strCMD1;
+		
+		if(this.libraryName == null){
+			strCMD1 = "java -javaagent:libs/tracer.jar=tracefile:hello.trace -cp bin:libs/hamcrest-all-1.3.jar:libs/junit-4.12.jar org.junit.runner.JUnitCore " + this.className;
+		}else{
+			strCMD1 = "java -javaagent:libs/tracer.jar=tracefile:hello.trace -cp bin:libs/hamcrest-all-1.3.jar:libs/junit-4.12.jar:" + this.libraryName + " org.junit.runner.JUnitCore " + this.className;
+		}
+		
+		String strCMD2 = "java -Xmx2g -jar libs/slicer.jar -p hello.trace " + this.className + "." + this.methodName + ":" + this.LINE + ":*";
+		
+		/**STEP 1. generating trace*/
+		CmdRunner cmd1 = new CmdRunner(strCMD1);
+		
+		/**STEP 2. slicing program*/
+		CmdRunner cmd2 = new CmdRunner(strCMD2);
+		
+		return cmd2.getResults(filter);
+		
 	}
 
 }

@@ -3,50 +3,42 @@ package sklse.yongfeng.jslicer;
 import java.util.List;
 
 /***
- * <p>Javaslicer is a code slice tool, it can output the dynamic backward slice of certain line or variable in the program. 
+ * <p><b>Javaslicer</b> is a code slice tool, it can output the dynamic backward slice of certain line or variable in the program. 
  * It's developed by Clemens Hammacher at Saarland University, German. 
  * It can be obtain at <a href="#">https://github.com/hammacher/javaslicer</a>.</p>
- * <p>We need JDK 1.6 or 1.7(BUT NOT 1.8), besides the limitations decleared on github site, it can perform well when 
- * dealing with small-scale Java program.</p>
+ * <p>We need JDK 1.6 or 1.7(BUT NOT 1.8), besides the limitations declared on github site, it can perform well when 
+ * dealing with small-scale Java program. The main steps of Javaslicer is as follows,</p>
+ * 
+ * <p>#STEP 1. Generating the trace in binary file.</p>
+ * <li><b>java -javaagent:libs/tracer.jar=tracefile:test.trace -cp bin/classes:resources my.package.ClassName</b></li>
+ * <li><b>java -javaagent:libs/tracer.jar=tracefile:test.trace -cp bin/classes:resources org.junit.runner.JUnitCore &lt;test class name&gt;</b></li>
+ * <p>Note: <b>test.trace</b> is the trace file path, <b>-cp</b> means the dependencies jar of .class files path, which separated by <b>:</b></p>
+ * 
+ * <p>#STEP 2. Slicing the program based on the trace file.</p>
+ * <li><b>java -Xmx2g -jar libs/slicer.jar -p test.trace CLASS.METHOD:LINE</b></li>
+ * <p>Note: <b>CLASS.METHOD:LINE</b> means the whole method name add line number by :</p>
+ *
  * @author yongfeng
  *
  */
 public class Usage {
 
 	public static void main(String[] args) {
-		// TODO Auto-generated method stub
-
-		/**STEP 1. java -javaagent:assembly/tracer.jar=tracefile:test.trace -jar evaluation/dacapo-2006-10-MR2.jar*/
-		/**STEP 1. java -javaagent:... -cp bin/classes:resources my.package.ClassName*/
-		/**STEP 1. java -javaagent:... org.junit.runner.JUnitCore <test class name>*/
 		
-		sliceMethod();
-//		sliceTestCase();
+		/** slicing on source code*/
+		Jslicer js1 = new Jslicer("sklse.yongfeng.jslicer.Hello","MaximumDivisor",30);
+		showList(js1.getMethodResults("sklse.yongfeng.jslicer.Hello"));
+		
+		/** slicing on test case*/
+		Jslicer js2 = new Jslicer("sklse.yongfeng.juint.CalculatorTest", "testDivide3", 78);
+		showList(js2.getTestResults("sklse.yongfeng.juint.CalculatorTest"));
 		
 	}
 	
-	public static void sliceMethod(){
-		/**STEP 1. generating trace*/
-//		CmdRunner cmd1 = new CmdRunner("java -javaagent:libs/tracer.jar=tracefile:hello.trace -cp bin/ sklse.yongfeng.jslicer.Hello");
-//		
-//		/**STEP 2. slicing program*/
-//		CmdRunner cmd2 = new CmdRunner("java -Xmx2g -jar libs/slicer.jar -p hello.trace sklse.yongfeng.jslicer.Hello.MaximumDivisor:30:*");
-////		System.out.println(cmd2.getResults("Hello"));
-//		showList(cmd2.getResults("Hello"));
-		
-		Jslicer js = new Jslicer("sklse.yongfeng.jslicer.Hello","MaximumDivisor",30);
-		showList(js.getMethodResults("sklse.yongfeng.jslicer.Hello"));
-	}
-	
-	public static void sliceTestCase(){
-		/**STEP 1. generating trace*/
-		CmdRunner cmd1 = new CmdRunner("java -javaagent:libs/tracer.jar=tracefile:test.trace -cp bin:libs/hamcrest-all-1.3.jar:libs/junit-4.12.jar: org.junit.runner.JUnitCore sklse.yongfeng.juint.CalculatorTest");
-		
-		/**STEP 2. slicing program*/
-		CmdRunner cmd2 = new CmdRunner("java -Xmx2g -jar libs/slicer.jar -p test.trace sklse.yongfeng.juint.CalculatorTest.testDivide3:78:*");
-		System.out.println(cmd2.getResults("CalculatorTest"));
-	}
-	
+	/***
+	 * To show array list line by line
+	 * @param ls list
+	 */
 	public static void showList(List<?> ls){
 		for(Object ols:ls){
 			System.out.println(ols.toString());
