@@ -5,9 +5,9 @@ import org.junit.runners.Suite;
 import org.junit.runners.Suite.SuiteClasses;
 
 /***
- * <p><b>JUnit</b> is a simple framework to write repeatable tests. Its official web site is <b>http://junit.org</b>, 
- * and you can also find user guidance on <b>https://github.com/junit-team/junit4/wiki/Getting-started</b>, and download the latest 
- * library from <b>http://mvnrepository.com/artifact/junit/junit</b>.</p>
+ * <p><b>JUnit</b> is a simple framework to write repeatable tests. Its official web site is <a href="#">http://junit.org</a>, 
+ * and you can also find user guidance on <a href="#">https://github.com/junit-team/junit4/wiki/Getting-started</a>, and download the latest 
+ * library from <a href="#">http://mvnrepository.com/artifact/junit/junit</a>.</p>
  * <p>To start the study of JUnit4 is quite easy, you should only add the junit-X.jar to your classpath and set some notations 
  * <p>1. <b>Assertions</b> is the core conception in JUnit, it can test the functionality of source by comparing the expected 
  * value and actual vale. JUnit provide many overloaded assertion methods for primitive types and objects and arrays, 

@@ -41,6 +41,7 @@ public class Jslicer {
 		}else{
 			strCMD1 = "java -javaagent:libs/tracer.jar=tracefile:hello.trace -cp bin:" + this.libraryName + " " + this.className;
 		}
+		
 		String strCMD2 = "java -Xmx2g -jar libs/slicer.jar -p hello.trace " + this.className + "." + this.methodName + ":" + this.LINE + ":*";
 		
 		/**STEP 1. generating trace*/

@@ -2,6 +2,15 @@ package sklse.yongfeng.jslicer;
 
 import java.util.List;
 
+/***
+ * <p>Javaslicer is a code slice tool, it can output the dynamic backward slice of certain line or variable in the program. 
+ * It's developed by Clemens Hammacher at Saarland University, German. 
+ * It can be obtain at <a href="#">https://github.com/hammacher/javaslicer</a>.</p>
+ * <p>We need JDK 1.6 or 1.7(BUT NOT 1.8), besides the limitations decleared on github site, it can perform well when 
+ * dealing with small-scale Java program.</p>
+ * @author yongfeng
+ *
+ */
 public class Usage {
 
 	public static void main(String[] args) {
