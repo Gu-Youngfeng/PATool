@@ -7,6 +7,6 @@ JUnit is the most widely used <code>Java testing framework</code>, it provide th
 See more detials at <a href="http://junit.org/junit4/">http://junit.org/junit4/</a>.
 
 ### 2. Javaslicer
-Javaslicer is a <code>dynamic backward slicing tool</code> for Java code, it can give the slices(relavent statements) of specific lines or variables.
+Javaslicer is a <code>dynamic backward slicing tool</code> for Java code, it can give the slices(relavent statements) of specific lines or variables. Note that Javaslicer only support JDK 1.6 and 1.7(but NOT JDK1.8). Additionally, we'd better use this tool on Linux platform.
 
 See more detials at <a href="https://github.com/hammacher/javaslicer">https://github.com/hammacher/javaslicer</a>.
