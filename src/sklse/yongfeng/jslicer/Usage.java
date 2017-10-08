@@ -9,14 +9,28 @@ import java.util.List;
  * <p>We need JDK 1.6 or 1.7(BUT NOT 1.8), besides the limitations declared on github site, it can perform well when 
  * dealing with small-scale Java program. The main steps of Javaslicer is as follows,</p>
  * 
- * <p>#STEP 1. Generating the binary trace file.</p>
- * <li><b>java -javaagent:libs/tracer.jar=tracefile:test.trace -cp bin/classes:resources my.package.ClassName</b></li>
- * <li><b>java -javaagent:libs/tracer.jar=tracefile:test.trace -cp bin/classes:resources org.junit.runner.JUnitCore &lt;test class name&gt;</b></li>
+ * <h3>#STEP 1. Generating the binary trace file.</h3>
+ * <li>java -javaagent:libs/tracer.jar=tracefile:test.trace -cp bin/classes:resources my.package.ClassName</li>
+ * <li>java -javaagent:libs/tracer.jar=tracefile:test.trace -cp bin/classes:resources org.junit.runner.JUnitCore &lt;test class name&gt;</li>
  * <p>Note: <b>test.trace</b> is the trace file path, <b>-cp</b> means the dependencies jar of .class files path, which separated by <b>:</b></p>
  * 
- * <p>#STEP 2. Slicing the program based on the trace file.</p>
- * <li><b>java -Xmx2g -jar libs/slicer.jar -p test.trace CLASS.METHOD:LINE</b></li>
+ * <h3>#STEP 2. Slicing the program based on the trace file.</h3>
+ * <li>java -Xmx2g -jar libs/slicer.jar -p test.trace CLASS.METHOD:LINE</li>
  * <p>Note: <b>CLASS.METHOD:LINE</b> denotes the whole method name and line number.</p>
+ * 
+ * <h3>#Output. The output of Javaslicer is the Java byte code instructions(NOT Java code). You can do any additional operations on the results.</h3>
+ * <pre>sklse.yongfeng.juint.CalculatorTest.testDivide3:76 NEW sklse/yongfeng/juint/Calculator
+ *sklse.yongfeng.juint.CalculatorTest.testDivide3:76 DUP
+ *sklse.yongfeng.juint.CalculatorTest.testDivide3:76 ICONST_3
+ *sklse.yongfeng.juint.CalculatorTest.testDivide3:76 ICONST_2
+ *sklse.yongfeng.juint.CalculatorTest.testDivide3:76 INVOKESPECIAL sklse/yongfeng/juint/Calculator.<init>(II)V
+ *sklse.yongfeng.juint.CalculatorTest.testDivide3:76 ASTORE 1
+ *sklse.yongfeng.juint.CalculatorTest.testDivide3:77 LDC 1.5
+ *sklse.yongfeng.juint.CalculatorTest.testDivide3:77 ALOAD 1
+ *sklse.yongfeng.juint.CalculatorTest.testDivide3:77 INVOKEVIRTUAL sklse/yongfeng/juint/Calculator.Divide()I
+ *sklse.yongfeng.juint.CalculatorTest.testDivide3:77 I2D
+ *sklse.yongfeng.juint.CalculatorTest.testDivide3:77 LDC 0.1
+ *sklse.yongfeng.juint.CalculatorTest.testDivide3:77 INVOKESTATIC org/junit/Assert.assertEquals(DDD)V</pre>
  *
  * @author yongfeng
  *
