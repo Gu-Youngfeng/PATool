@@ -1,9 +1,7 @@
 package sklse.yongfeng.jslicer;
 
 import java.io.BufferedReader;
-import java.io.IOException;
 import java.io.InputStreamReader;
-import java.io.Reader;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -11,16 +9,21 @@ import java.util.List;
  * <p>This class <b>CmdRunner</b> is used to simulate the execution in terminate.</p>
  * <p>We provide {@link#CmdRunner(String)} to initialize the cmd, and use {@link#show()} or {@link#show(String)} to display the results. 
  * Beside, {@link#getResults()} or {@link#getResults(String)} is used to collect the output lines.</p>
+ * <p>Note
+ * <li>The parameter of constructor is a string array, if you want to execute one more commands, you'd better use ; to separate them.</li>
+ * <li>If you want to use 'cd' command in CmdRunner, we must initialize the string array in this way 
+ * <pre>new String[]{"/bin/bash", "-c", "cd XXX"}</pre></li>
+ * </p>
  * @author yongfeng
  *
  */
 public class CmdRunner {
 	
-	private String cmd;
+	private String[] cmd;
 	
 	private List<String> output = new ArrayList<String>();
 	
-	public CmdRunner(String cmd){
+	public CmdRunner(String[] cmd){
 		this.cmd = cmd;
 		runCMD();
 	}

@@ -63,10 +63,10 @@ public class Jslicer {
 		String strCMD2 = "java -Xmx2g -jar libs/slicer.jar -p hello.trace " + this.className + "." + this.methodName + ":" + this.LINE + ":*";
 		
 		/**STEP 1. generating trace*/
-		CmdRunner cmd1 = new CmdRunner(strCMD1);
+		CmdRunner cmd1 = new CmdRunner(new String[]{strCMD1});
 		
 		/**STEP 2. slicing program*/
-		CmdRunner cmd2 = new CmdRunner(strCMD2);
+		CmdRunner cmd2 = new CmdRunner(new String[]{strCMD2});
 
 		return cmd2.getResults(filter);
 	}
@@ -89,10 +89,10 @@ public class Jslicer {
 		String strCMD2 = "java -Xmx2g -jar libs/slicer.jar -p hello.trace " + this.className + "." + this.methodName + ":" + this.LINE + ":*";
 		
 		/**STEP 1. generating trace*/
-		CmdRunner cmd1 = new CmdRunner(strCMD1);
+		CmdRunner cmd1 = new CmdRunner(new String[]{strCMD1});
 		
 		/**STEP 2. slicing program*/
-		CmdRunner cmd2 = new CmdRunner(strCMD2);
+		CmdRunner cmd2 = new CmdRunner(new String[]{strCMD2});
 		
 		return cmd2.getResults(filter);
 		
