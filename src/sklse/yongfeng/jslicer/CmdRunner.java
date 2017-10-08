@@ -11,8 +11,9 @@ import java.util.List;
  * Beside, {@link#getResults()} or {@link#getResults(String)} is used to collect the output lines.</p>
  * <p>Note
  * <li>The parameter of constructor is a string array, if you want to execute one more commands, you'd better use ; to separate them.</li>
+ * <pre>CmdRunner(new String[]{"java -version;javac -version"});</pre>
  * <li>If you want to use 'cd' command in CmdRunner, we must initialize the string array in this way 
- * <pre>new String[]{"/bin/bash", "-c", "cd XXX"}</pre></li>
+ * <pre>CmdRunner(new String[]{"/bin/bash", "-c", "cd XXX"});</pre></li>
  * </p>
  * @author yongfeng
  *
@@ -77,14 +78,23 @@ public class CmdRunner {
 		}
 	}
 	
+	/**
+	 * To get all output on the terminal
+	 * @return
+	 */
 	public List<String> getResults(){
 		return this.output;
 	}
 	
+	/**
+	 * To get output ,which starts with <b>filter</b>, on the terminal
+	 * @param filter
+	 * @return
+	 */
 	public List<String> getResults(String filter){
 		List<String> foutput = new ArrayList<>();
 		for(String line: this.output){
-			if(line.contains(filter)){
+			if(line.startsWith(filter)){
 				foutput.add(line);
 			}
 		}

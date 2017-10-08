@@ -1,7 +1,6 @@
 package sklse.yongfeng.juint;
 
 import org.junit.*;
-import org.junit.rules.Timeout;
 import org.junit.runners.MethodSorters;
 import static org.hamcrest.CoreMatchers.*;
 
@@ -75,7 +74,7 @@ public class CalculatorTest {
 	@Test
 	public void testDivide3(){
 		Calculator ca2 = new Calculator(3, 2);
-		Assert.assertEquals(1.5, ca2.Divide());
+		Assert.assertEquals(1.5, ca2.Divide(), 0.1);
 	}
 	
 	@Test

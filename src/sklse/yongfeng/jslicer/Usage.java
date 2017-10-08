@@ -26,15 +26,12 @@ public class Usage {
 	public static void main(String[] args) {
 		
 		/** slicing on source code*/
-//		Jslicer js1 = new Jslicer("sklse.yongfeng.jslicer.Hello","MaximumDivisor",30);
+//		Jslicer js1 = new Jslicer("/home/yongfeng/workspace/PATools4J/", "sklse.yongfeng.jslicer.Hello","MaximumDivisor",30);
 //		showList(js1.getMethodResults("sklse.yongfeng.jslicer.Hello"));
 		
 		/** slicing on test case*/
-//		Jslicer js2 = new Jslicer("sklse.yongfeng.juint.CalculatorTest", "testDivide3", 78);
-//		showList(js2.getTestResults("sklse.yongfeng.juint.CalculatorTest"));
-		
-		CmdRunner crd = new CmdRunner(new String[]{"/bin/bash", "-c", "cd /home/yongfeng/workspace/;ls;touch new.txt"});
-		crd.show();
+		Jslicer js2 = new Jslicer("/home/yongfeng/workspace/PATools4J/", "sklse.yongfeng.juint.CalculatorTest", "testDivide3", 77);
+		showList(js2.getTestResults("sklse.yongfeng.juint.CalculatorTest"));
 		
 	}
 	
