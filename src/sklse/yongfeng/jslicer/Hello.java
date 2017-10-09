@@ -9,6 +9,7 @@ public class Hello {
 		int num1 = 15,
 			num2 = 20;
 		System.out.println("Maximun of <" + num1 + ", " + num2 + "> = " + MaximumDivisor(num1, num2));
+		
 	}
 	
 	public static int Factorial(int n){
