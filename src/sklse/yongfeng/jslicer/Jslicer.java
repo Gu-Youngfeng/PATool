@@ -6,8 +6,14 @@ import java.util.List;
  * <p>This class <b>Jslicer</b> implement the function of JavaSlicer, which input are class name, method name, and line number. 
  * and the output is the slices list array. Here is one example, </p>
  * <pre>
- * Jslicer js = new Jslicer(Pat, Cla, Met, lin);  //input 4 arguments
- * js.getMethodResults(Cla);  //return the slices.</pre>
+ * Jslicer js = new Jslicer(Pat, Cla, Met, Lin);  //input 4 arguments
+ * js.getMethodResults(Cla);  //return the slices of method.
+ * js.getTestResults(Cla);  //return the slices of test case.</pre>
+ * <p>Note that the 4 parameters must be correct, more specifically,
+ * <br><b>Pat</b> denotes the absolute path of project you want to slice.
+ * <br><b>Cla</b> denotes the full class name with corresponding package.
+ * <br><b>Met</b> denotes the method name.
+ * <br><b>Lin</b> denotes the line number.</p>
  * @author yongfeng
  *
  */
