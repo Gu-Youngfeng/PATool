@@ -2,6 +2,9 @@
 This project will give some examples of usage of some Program Analysis Tools, which are briefly introduced as follows,
 
 ### 1. JUnit 4
+
+ ![junit](imgs/junit.png)
+
 JUnit is the most widely used <code>Java testing framework</code>, it provide the differeny strategies of testing. Here we focus on the JUnit 4 version.
 
 Note: 
@@ -24,6 +27,9 @@ b. Two step to use Javaslicer: <b>(i)</b> generate the trace file, <b>(ii)</b> r
 Website: <a href="https://github.com/hammacher/javaslicer">https://github.com/hammacher/javaslicer</a>.
 
 ### 3. Spoon
+
+![spoon](imgs/spoon.jpg)
+
 Spoon is an open-source Java <code>analysis and transform tool</code>, which is widely used in program analysis, feature extraction, program mutation etc.
 
 Website: <a href="http://spoon.gforge.inria.fr/">http://spoon.gforge.inria.fr/</a>.
