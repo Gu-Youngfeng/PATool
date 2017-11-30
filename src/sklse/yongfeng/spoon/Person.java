@@ -1,5 +1,7 @@
 package sklse.yongfeng.spoon;
 
+import java.io.IOException;
+
 public class Person {
 	
 	private String name;
@@ -42,12 +44,23 @@ public class Person {
 			// do nothing
 		}catch(Exception e){
 			System.out.println("Exception!");
+			System.out.println("Exception!");
+			System.out.println("Exception!");
+			System.out.println("Exception!");
+			System.out.println("Exception!");
 		}
 		
 		try{
-			// do nothing
-		}catch(Exception e){
-			// do nothing
+			// do nothing-1
+		}catch(Exception e1){
+			// do nothing-1
+		}
+		
+		/**catch block 2*/
+		try{
+			// do nothing-2
+		}catch(Exception e2){
+			// do nothing-2
 		}
 		
 		for(int i=0; i<a; i++){
